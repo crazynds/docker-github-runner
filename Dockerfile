@@ -10,12 +10,13 @@ RUN /tmp/installdependencies.sh
 
 
 
-# Create a folder
-RUN mkdir /actions-runner && cd /actions-runner
-# Download the latest runner package
-RUN curl -o actions-runner-linux-x64-2.304.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.304.0/actions-runner-linux-x64-2.304.0.tar.gz
-# Extract the installer
-RUN tar xzf ./actions-runner-linux-x64-2.304.0.tar.gz
+# Create a folder && download && extract
+RUN mkdir /actions-runner && \
+	cd /actions-runner && \
+	curl -o /actions-runner/actions-runner-linux-x64-2.304.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.304.0/actions-runner-linux-x64-2.304.0.tar.gz && \
+	tar xzf ./actions-runner-linux-x64-2.304.0.tar.gz && \
+	ls -l
+
 
 COPY run.sh /actions-runner/run.sh
 RUN chmod +x /actions-runner/run.sh
@@ -24,8 +25,13 @@ RUN apt-get -y autoremove \
     && apt-get clean\
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-USER root
+
+RUN useradd -ms /bin/bash runner
+RUN chown runner.runner /actions-runner -R
 
 
-CMD /actions-runner/run.sh
+USER runner
+
+
+CMD cd /actions-runner && ./run.sh
 

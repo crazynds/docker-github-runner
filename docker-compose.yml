@@ -6,5 +6,5 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     environment:
-      URL: 'https://github.com/crazynds/PCare'
-      TOKEN: 'AIXZUMF2DWB5GG7443PQRZTEMIXVK'
+      URL: ${URL}
+      TOKEN: ${TOKEN}
