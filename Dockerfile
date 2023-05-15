@@ -5,7 +5,7 @@ COPY installdependencies.sh /tmp/installdependencies.sh
 
 RUN chmod +x /tmp/installdependencies.sh
 RUN apt update
-RUN apt install curl -y
+RUN apt install curl docker-ce-cli -y
 RUN /tmp/installdependencies.sh
 
 RUN useradd -ms /bin/bash runner

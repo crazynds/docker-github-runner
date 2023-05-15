@@ -10,7 +10,7 @@ else
 	tar xzf ./actions-runner.tar.gz
 	echo "RUNNER CONFIGURE"
 	cp /actions-runner/input /runner/input
-	./config.sh --url $URL --token $TOKEN
+	./config.sh --url $URL --token $TOKEN < input
 fi
 
 echo "RUNNER RUNNING"

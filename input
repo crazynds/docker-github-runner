@@ -1,4 +1,4 @@
 
-docker-runner
-debian,ubuntu
+
+debian,ubuntu-latest,ubuntu
 
