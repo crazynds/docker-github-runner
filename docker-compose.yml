@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
+    volumes:
+      - './data:/runner'
     environment:
       URL: ${URL}
       TOKEN: ${TOKEN}
