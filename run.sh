@@ -10,6 +10,7 @@ else
 	tar xzf ./actions-runner.tar.gz
 	echo "RUNNER CONFIGURE"
 	cp /actions-runner/input /runner/input
+	./config.sh remove --token $TOKEN
 	./config.sh --url $URL --token $TOKEN < input
 fi
 
