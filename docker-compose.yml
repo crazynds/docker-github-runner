@@ -1,0 +1,10 @@
+version: '3'
+services:
+  runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      URL: 'https://github.com/crazynds/PCare'
+      TOKEN: 'AIXZUMF2DWB5GG7443PQRZTEMIXVK'
