@@ -10,9 +10,9 @@ else
 	tar xzf ./actions-runner.tar.gz
 	echo "RUNNER CONFIGURE"
 	cp /actions-runner/input /runner/input
-	./config.sh remove --token $TOKEN
-	./config.sh --url $URL --token $TOKEN < input
+	RUNNER_ALLOW_RUNASROOT=1 ./config.sh remove --token $TOKEN
+	RUNNER_ALLOW_RUNASROOT=1 ./config.sh --url $URL --token $TOKEN < input
 fi
 
 echo "RUNNER RUNNING"
-./run.sh
+RUNNER_ALLOW_RUNASROOT=1 ./run.sh

@@ -1,9 +1,7 @@
 version: '3'
 services:
   runner:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: crazynds/github-runner
     restart: unless-stopped
     volumes:
       - './data:/runner'
