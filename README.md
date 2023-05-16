@@ -17,6 +17,23 @@ GitHub provides runners that you can use to run your jobs, or you can host your 
 docker run crazynds/github-runner -v '/var/run/docker.sock:/var/run/docker.sock' -e URL $URL -e TOKEN $TOKEN
 ```
 
+#### Docker compose
+
+
+```yaml
+version: '3'
+services:
+  runner:
+    image: crazynds/github-runner
+    restart: unless-stopped
+    volumes:
+      - './data:/runner'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    environment:
+      URL: ${URL}
+      TOKEN: ${TOKEN}
+```
+
 #### Environment Variables
 
 * `URL` - Url of repository
